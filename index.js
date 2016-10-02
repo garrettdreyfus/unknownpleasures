@@ -9,13 +9,13 @@ var n = 0;
 animate();
 
 function centerAmplitude(x){
-      var temp =  Math.min((.5 / Math.abs(x - canvas.width/2)), 0.01);
+      var temp =  Math.min(Math.pow((.5 / Math.abs(x - canvas.width/2)),1.075), 0.01);
 			return temp;
 
 }
 // sawtooth sine
 function dumbrandom(x, a, b, c, amplitude) {
-  return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 3 * Math.sin(0.3333333 * (x + b)) + 0.25 * Math.sin(4 * (x + c)));
+  return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 3 * Math.sin(0.3333333 * (x + b)) + 0.25 * Math.sin(0.2 * (x + c)));
 }
 
 var waves= [];
