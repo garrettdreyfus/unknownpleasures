@@ -9,12 +9,26 @@ function createCanvas(){
 	document.body.appendChild(canvas);
 
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		canvas.height= window.clientHeight;
-		canvas.width = canvas.height;
+		if(window.clientHeight < window.clientWidth){
+			canvas.height= window.clientHeight;
+			canvas.width = canvas.height;
+		}
+		else{
+			canvas.width= window.clientWidth;
+			canvas.height = canvas.width;
+	
+		}
 	}
 	else{
-		canvas.height= window.innerHeight;
-		canvas.width = canvas.height;
+		if(window.innerHeight < window.innerWidth){
+			canvas.height= window.innerHeight;
+			canvas.width = canvas.height;
+		}
+		else{
+			canvas.width= window.innerWidth;
+			canvas.height = canvas.width;
+	
+		}
 	}
 	ctx = canvas.getContext("2d"); 
 }
