@@ -6,8 +6,8 @@ function createCanvas(){
 	canvas = document.createElement('canvas');
 	canvas.id = "canvas";
 	document.body.appendChild(canvas);
-	canvas.height=800;
-	canvas.width = 800;
+	canvas.height= window.innerHeight;
+	canvas.width = canvas.height;
 	ctx = canvas.getContext("2d"); 
 }
 requestid= null;
@@ -64,7 +64,7 @@ function drawable(){
 	var excluded = 2;
 	waves = [];
 	for(var i=excluded; i<num-2*excluded;i++){
-		waves.push(new Wave(dumbrandom,coordAmplitude,(canvas.width/num)*i));
+		waves.push(new Wave(dumbrandom,coordAmplitude,(canvas.height/num)*i));
 	}
 
 	function animate() {
