@@ -27,6 +27,8 @@ function drawable(){
 			waves[number-3].xs.push(x);;
 		}
 	}
+	//canvas.ontouchmove = canvas.onmousemove;
+	//}
 	ctx.lineWidth = 3;
 
 	var fps = 120;
@@ -37,12 +39,14 @@ function drawable(){
 
 	}
 	var mouseDown = 0;
-	document.body.onmousedown = function() { 
+	document.onmousedown = function() { 
 			++mouseDown;
 	}
-	document.body.onmouseup = function() {
+	document.ontouchstart = document.onmousedown;
+	document.onmouseup = function() {
 			--mouseDown;
 	}
+	document.ontouchend = document.onmouseup;
 	function coordAmplitude(x,xs){
 		var max = 0.001;
 		for(var i=0; i<xs.length;i++){
