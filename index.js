@@ -3,11 +3,19 @@ function createCanvas(){
 	if(document.getElementById("canvas")){
 		document.body.removeChild(document.getElementById("canvas"));
 	}
+
 	canvas = document.createElement('canvas');
 	canvas.id = "canvas";
 	document.body.appendChild(canvas);
-	canvas.height= window.innerHeight;
-	canvas.width = canvas.height;
+
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		canvas.height= window.clientHeight;
+		canvas.width = canvas.height;
+	}
+	else{
+		canvas.height= window.innerHeight;
+		canvas.width = canvas.height;
+	}
 	ctx = canvas.getContext("2d"); 
 }
 requestid= null;
