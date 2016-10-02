@@ -13,6 +13,8 @@ function createCanvas(){
 requestid= null;
 createCanvas();
 function drawable(){
+	document.getElementById("drawable").style.color = "orange";
+	document.getElementById("OG").style.color = "white";
 	if(requestid){
 		window.cancelAnimationFrame(requestid);
 	}
@@ -71,6 +73,8 @@ function drawable(){
 	animate();
 }
 function OG(){
+	document.getElementById("drawable").style.color = "white";
+	document.getElementById("OG").style.color = "orange";
 	if(requestid){
 		window.cancelAnimationFrame(requestid);
 	}
@@ -115,3 +119,4 @@ function OG(){
 	animate();
 }
 
+OG();

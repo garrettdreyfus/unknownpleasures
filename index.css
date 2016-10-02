@@ -35,24 +35,20 @@ canvas {
 	padding-top:2%;
 	display:inline;
 	right : 2%;
+	cursor: pointer;
 }
 #drawable {
 	position:absolute;
 	padding-top:2%;
 	display:inline;
 	left : 2%;
+	cursor: pointer;
 }
 
 
 #creds{
 	font-family: Trajan;
-	font-size:24;
-	margin-top:50%;
+	font-size:24px;
 	color:white;
-	position:absolute;
-	text-align:center;
-	width:100%;
-	left:0%;
-	z-index:1;
-
+	position:relative;
 }
