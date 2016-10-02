@@ -41,6 +41,6 @@ function animate() {
 		}
 
 
-  }, 1000 / fps);
+  }, 100 / fps);
 }
 
