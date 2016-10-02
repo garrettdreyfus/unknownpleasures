@@ -7,13 +7,14 @@ function Wave(wav, amp, placement) {
   this.wave = wav;
   this.amplitude = amp;
   this.placement = placement;
+  this.color = "white";
   this.draw = function(){
     // Drawing code goes here
     n = canvas.width;
     this.shift++;
 
     ctx.beginPath();
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = this.color;
     ctx.lineWidth = 2;
     for (var x = this.edge; x < n-this.edge; x++) {
       var y = this.wave((x - this.shift)/2, this.Aoffset, this.Boffset, this.Coffset, this.amplitude(x));

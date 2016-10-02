@@ -7,7 +7,7 @@ body {
 }
 
 #canvas {
-		border: 1px solid white;
+		border: 0px solid white;
 		margin: 0px;
 		padding:0px;
    	display: inline;

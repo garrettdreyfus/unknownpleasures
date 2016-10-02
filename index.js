@@ -21,18 +21,26 @@ function dumbrandom(x, a, b, c, amplitude) {
 var waves= [];
 var num=60;
 var excluded = 2;
-for(var i=excluded; i<num-excluded;i++){
+for(var i=excluded; i<num-2*excluded;i++){
 	waves.push(new Wave(dumbrandom,centerAmplitude,(canvas.width/num)*i));
+}
+function color(evt) {
+	var rect = canvas.getBoundingClientRect();
+	x= evt.clientX - rect.left;
+	y= evt.clientY - rect.top;
+	var number = Math.round(y/(canvas.width/num));
+	waves[number-3].color = "red";
+	console.log(x,y);
 }
 function animate() {
   setTimeout(function() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-		for(var i=0; i<num-2*excluded;i++){
+		for(var i=0; i<num-3*excluded;i++){
 			waves[i].draw();
 		}
 
 
-  }, 100 / fps);
+  }, 1000 / fps);
 }
 
