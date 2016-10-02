@@ -1,16 +1,58 @@
+
+@font-face {
+  font-family: "Trajan";
+	src: url(TrajanPro-Regular.ttf) format('truetype');
+}
 body {
 	  background-color: Black;
 		margin: 0px;
 		padding:0px;
     position: absolute;
-    top: calc( 50% - 400px); left: calc( 50% - 400px);
+		text-align:center;
+    top: 0; left:0;
+		width:100%;
 }
 
-#canvas {
-		border: 0px solid white;
+
+canvas {
 		margin: 0px;
-		padding:0px;
-   	display: inline;
-
+		padding: 0px;
+    position: absolute;
+    top: 50%;
+		left: calc( 50% - 400px);
+		z-index:2;
 }
 
+#menu{
+	font-size : 48;
+	left: 0%;
+	color:white;
+	text-align:center;
+	font-family: Trajan;
+}
+#OG {
+	position:absolute;
+	padding-top:2%;
+	display:inline;
+	right : 2%;
+}
+#drawable {
+	position:absolute;
+	padding-top:2%;
+	display:inline;
+	left : 2%;
+}
+
+
+#creds{
+	font-family: Trajan;
+	font-size:24;
+	margin-top:50%;
+	color:white;
+	position:absolute;
+	text-align:center;
+	width:100%;
+	left:0%;
+	z-index:1;
+
+}
