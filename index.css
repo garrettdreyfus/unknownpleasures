@@ -1,0 +1,16 @@
+body {
+	  background-color: Black;
+		margin: 0px;
+		padding:0px;
+    position: absolute;
+    top: calc( 50% - 400px); left: calc( 50% - 400px);
+}
+
+#canvas {
+		border: 1px solid white;
+		margin: 0px;
+		padding:0px;
+   	display: inline;
+
+}
+
