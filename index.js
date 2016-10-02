@@ -31,10 +31,12 @@ function createCanvas(){
 		}
 	}
 	ctx = canvas.getContext("2d"); 
+	OG();
 }
 requestid= null;
 createCanvas();
 function drawable(){
+
 	document.getElementById("drawable").style.color = "orange";
 	document.getElementById("OG").style.color = "white";
 	if(requestid){
@@ -47,7 +49,7 @@ function drawable(){
 		y= evt.clientY - rect.top;
 		var number = Math.round(y/(canvas.width/num) );
 		if(mouseDown){
-			waves[number-3].xs.push(x);;
+			waves[number-3].xs.push(x);
 		}
 	}
 	//canvas.ontouchmove = canvas.onmousemove;
@@ -89,17 +91,26 @@ function drawable(){
 	for(var i=excluded; i<num-2*excluded;i++){
 		waves.push(new Wave(dumbrandom,coordAmplitude,(canvas.height/num)*i));
 	}
-
+	frame =1001;
 	function animate() {
-		requestid = requestAnimationFrame(animate);
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		for(var i=0; i<num-3*excluded;i++){
-			waves[i].draw();
-		}
+			if(frame<100){
+				gif.addFrame(canvas, {delay: 10});
+				frame++;
+			}
+			if(frame==100){
+							gif.render();
+				frame =1001;
+			}
+			requestid = requestAnimationFrame(animate);
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for(var i=0; i<num-3*excluded;i++){
+				waves[i].draw();
+			}
 	}
 	animate();
 }
 function OG(){
+
 	document.getElementById("drawable").style.color = "white";
 	document.getElementById("OG").style.color = "orange";
 	if(requestid){
@@ -136,7 +147,27 @@ function OG(){
 		waves.push(new Wave(dumbrandom,centerAmplitude	,(canvas.width/num)*i));
 	}
 
+	gif = new GIF({
+			workers: 5,
+			quality: 256,
+		  workerScript: 'gif.js/dist/gif.worker.js',
+	});
+	gif.on('finished', function(blob) {
+						console.log("hi");
+						download(blob,"unknownpleasures.gif", "image/gif");
+					  window.open(URL.createObjectURL(blob));
+				});
+
+	frame =1001;
 	function animate() {
+			if(frame<100){
+				gif.addFrame(canvas, {delay: 10});
+				frame++;
+			}
+			if(frame==100){
+							gif.render();
+				frame =1001;
+			}
 			requestid = requestAnimationFrame(animate);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			for(var i=0; i<num-3*excluded;i++){
@@ -146,4 +177,3 @@ function OG(){
 	animate();
 }
 
-OG();

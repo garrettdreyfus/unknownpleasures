@@ -53,3 +53,12 @@ canvas {
 	color:white;
 	position:relative;
 }
+#gifit{
+	position:absolute;
+	padding-top:2%;
+	display:inline;
+	left : 2%;
+	cursor: pointer;
+	z-index:5;
+
+}
