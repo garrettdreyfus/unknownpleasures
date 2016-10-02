@@ -8,11 +8,26 @@ var fps = 120;
 var n = 0;
 animate();
 
-function centerAmplitude(x){
-      var temp =  Math.min(Math.pow((.5 / Math.abs(x - canvas.width/2)),1.075), 0.01);
-			return temp;
+function centerAmplitude(x,xs){
+	var temp =  Math.min(Math.pow((.5 / Math.abs(x - canvas.width/2)),1.075), 0.01);
+	return temp;
 
 }
+var mouseDown = 0;
+document.body.onmousedown = function() { 
+	  ++mouseDown;
+}
+document.body.onmouseup = function() {
+	  --mouseDown;
+}
+function coordAmplitude(x,xs){
+	var max = 0.001;
+	for(var i=0; i<xs.length;i++){
+		max = Math.max(Math.min(Math.pow((.6 / Math.abs(x - xs[i])),2), 0.01),max);
+	}
+	return max;
+}
+
 // sawtooth sine
 function dumbrandom(x, a, b, c, amplitude) {
   return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 3 * Math.sin(0.3333333 * (x + b)) + 0.25 * Math.sin(0.2 * (x + c)));
@@ -22,15 +37,16 @@ var waves= [];
 var num=60;
 var excluded = 2;
 for(var i=excluded; i<num-2*excluded;i++){
-	waves.push(new Wave(dumbrandom,centerAmplitude,(canvas.width/num)*i));
+	waves.push(new Wave(dumbrandom,coordAmplitude,(canvas.width/num)*i));
 }
 function color(evt) {
 	var rect = canvas.getBoundingClientRect();
 	x= evt.clientX - rect.left;
 	y= evt.clientY - rect.top;
-	var number = Math.round(y/(canvas.width/num));
-	waves[number-3].color = "red";
-	console.log(x,y);
+	var number = Math.round(y/(canvas.width/num) );
+	if(mouseDown){
+		waves[number-3].xs.push(x);;
+	}
 }
 function animate() {
   setTimeout(function() {
