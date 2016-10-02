@@ -19,7 +19,7 @@ function dumbrandom(x, a, b, c, amplitude) {
 }
 
 var waves= [];
-var num=40;
+var num=60;
 var excluded = 2;
 for(var i=excluded; i<num-excluded;i++){
 	waves.push(new Wave(dumbrandom,centerAmplitude,(canvas.width/num)*i));
