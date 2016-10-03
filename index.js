@@ -31,7 +31,7 @@ function drawable(){
 		window.cancelAnimationFrame(requestid);
 	}
 	canvas.onmousemove = function (evt) {
-		event.preventDefault();
+		evt.preventDefault();
 		var rect = canvas.getBoundingClientRect();
 		x= evt.clientX - rect.left;
 		y= evt.clientY - rect.top;
@@ -41,7 +41,7 @@ function drawable(){
 		}
 	}
 	canvas.ontouchmove = function (evt) {
-		event.preventDefault();
+		evt.preventDefault();
 		var rect = canvas.getBoundingClientRect();
 		x= evt.touches[0].clientX - rect.left;
 		y= evt.touches[0].clientY - rect.top;
