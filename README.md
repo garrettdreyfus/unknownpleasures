@@ -1,7 +1,7 @@
 # unknownpleasures
 ###https://garrettdreyfus.github.io/unknownpleasures/
 
-This is a drawing tool which mimics the style of the album cover of the seminal album Unknown Pleasures by Joy Division.
+This is a drawing tool which mimics the style of the album cover of the seminal album Unknown Pleasures by Joy Division. The original cover was created by Peter Saville. This project was made in a day.
 
 ##OG Cover
 A bad imitation of the original album cover.
