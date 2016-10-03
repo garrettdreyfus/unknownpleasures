@@ -12,7 +12,7 @@ function Wave(wav, amp, placement) {
   this.draw = function(){
     // Drawing code goes here
     n = canvas.width;
-    this.shift++;
+    this.shift+=4%(40*Math.PI);
 
     ctx.beginPath();
     ctx.strokeStyle = this.color;

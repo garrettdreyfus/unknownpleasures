@@ -37,7 +37,7 @@ requestid= null;
 createCanvas();
 function drawable(){
 
-	document.getElementById("drawable").style.color = "orange";
+	document.getElementById("draw").style.color = "orange";
 	document.getElementById("OG").style.color = "white";
 	if(requestid){
 		window.cancelAnimationFrame(requestid);
@@ -82,7 +82,7 @@ function drawable(){
 
 	// sawtooth sine
 	function dumbrandom(x, a, b, c, amplitude) {
-		return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 3 * Math.sin(0.3333333 * (x + b)) + 0.25 * Math.sin(0.2 * (x + c)));
+		return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 4 * Math.sin(0.25 * (x + b)) + 0.25 * Math.sin(0.2 * (x + c)));
 	}
 
 	var num=60;
@@ -91,16 +91,32 @@ function drawable(){
 	for(var i=excluded; i<num-2*excluded;i++){
 		waves.push(new Wave(dumbrandom,coordAmplitude,(canvas.height/num)*i));
 	}
+	gif = new GIF({
+			workers: 10,
+			quality: 128,
+		  workerScript: 'gif.js/dist/gif.worker.js',
+	});
+	gif.on('finished', function(blob) {
+						download(blob,"unknownpleasures.gif", "image/gif");
+						document.getElementById("gifit").className = "";	
+						document.getElementById("gifit").style.color = "white";	
+				});
+
 	frame =1001;
 	function animate() {
-			if(frame<100){
-				gif.addFrame(canvas, {delay: 10});
+			if(frame<64){
+				gif.addFrame(canvas, {delay: 25,copy:true});
 				frame++;
 			}
-			if(frame==100){
+			if(frame==64){
 							gif.render();
 				frame =1001;
 			}
+			if(frame!=1001){
+				document.getElementById("gifit").className = "blink";	
+				document.getElementById("gifit").style.color = "red";	
+			}
+
 			requestid = requestAnimationFrame(animate);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			for(var i=0; i<num-3*excluded;i++){
@@ -111,7 +127,7 @@ function drawable(){
 }
 function OG(){
 
-	document.getElementById("drawable").style.color = "white";
+	document.getElementById("draw").style.color = "white";
 	document.getElementById("OG").style.color = "orange";
 	if(requestid){
 		window.cancelAnimationFrame(requestid);
@@ -137,7 +153,7 @@ function OG(){
 
 	// sawtooth sine
 	function dumbrandom(x, a, b, c, amplitude) {
-		return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 3 * Math.sin(0.3333333 * (x + b)) + 0.25 * Math.sin(0.2 * (x + c)));
+		return 300 * amplitude * (5 * Math.sin(.1 * (x + a)) + 4 * Math.sin(0.25 * (x + b)) + 0.25 * Math.sin(0.2 * (x + c)));
 	}
 
 	var waves= [];
@@ -148,31 +164,36 @@ function OG(){
 	}
 
 	gif = new GIF({
-			workers: 5,
-			quality: 256,
+			workers: 10,
+			quality: 128,
 		  workerScript: 'gif.js/dist/gif.worker.js',
 	});
 	gif.on('finished', function(blob) {
 						console.log("hi");
 						download(blob,"unknownpleasures.gif", "image/gif");
-					  window.open(URL.createObjectURL(blob));
+						document.getElementById("gifit").className = "";	
+						document.getElementById("gifit").style.color = "white";	
 				});
 
 	frame =1001;
 	function animate() {
-			if(frame<100){
-				gif.addFrame(canvas, {delay: 10});
+			if(frame<63){
+				gif.addFrame(canvas, {delay: 25,copy:true});
 				frame++;
 			}
-			if(frame==100){
+			if(frame==63){
 							gif.render();
 				frame =1001;
 			}
-			requestid = requestAnimationFrame(animate);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			for(var i=0; i<num-3*excluded;i++){
 				waves[i].draw();
 			}
+			if(frame!=1001){
+				document.getElementById("gifit").className = "blink";	
+				document.getElementById("gifit").style.color = "red";	
+			}
+			requestid = requestAnimationFrame(animate);
 	}
 	animate();
 }
