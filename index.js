@@ -52,7 +52,7 @@ function drawable(){
 			waves[number-3].xs.push(x);
 		}
 	}
-	//canvas.ontouchmove = canvas.onmousemove;
+	canvas.ontouchmove = canvas.onmousemove;
 	//}
 	ctx.lineWidth = 3;
 
