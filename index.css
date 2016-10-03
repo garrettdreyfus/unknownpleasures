@@ -32,6 +32,8 @@ canvas {
 	z-index:5;
   user-select: none;
 	cursor: pointer;
+	    font-size: 4.5vw;
+
 
 }
 #OG {
@@ -55,6 +57,7 @@ canvas {
 	font-size:24px;
 	color:white;
 	position:relative;
+	    font-size:1.75vw;
 }
 #gifit{
 	position:absolute;
