@@ -9,27 +9,27 @@ A mode that lets you click and draw in the style of the album cover. Once you're
 
 ##Gallery
 
-Stock 
+###Stock 
 
 ![](http://imgur.com/NLxJzQF.gif)
 
-Hello
+###Hello
 
 ![](http://imgur.com/9A53lxP.gif)
 
-I saw a shirt like this recently. Wu tang symbol. 
+###I saw a shirt like this recently. Wu tang symbol. 
 
 ![](http://imgur.com/Xt5PwWZ.gif)
 
-A truncated american flag. It helps to squint.
+###A truncated american flag. It helps to squint.
 
 ![](http://imgur.com/qODC1Fn.gif)
 
-In honor of Danny Brown's new album Atrocity Exhibition.
+###In honor of Danny Brown's new album Atrocity Exhibition.
 
 ![](http://imgur.com/Fby3Ulq.gif)
 
-Pandemonium
+###Pandemonium
 
 ![](http://imgur.com/kAlhRdG.gif)
 
